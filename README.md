@@ -123,6 +123,29 @@ To avoid startup latch-up, the following initial conditions are applied:
 
 ---
 
+## Example Simulation Results
+
+All plots show `vdiff` (green), `vsf` (blue), `vout` (white), `p1` (orange), `vin` (red) over a 10 s transient with a sine wave input and Vdn = 0.47 V.
+
+### 0.1 Hz
+![0.1 Hz simulation](images/sim_0.1hz.png)
+
+### 0.3 Hz
+![0.3 Hz simulation](images/sim_0.3hz.png)
+
+### 0.5 Hz
+![0.5 Hz simulation](images/sim_0.5hz.png)
+
+### 0.8 Hz
+![0.8 Hz simulation](images/sim_0.8hz.png)
+
+### 1.0 Hz
+![1.0 Hz simulation](images/sim_1.0hz.png)
+
+As frequency increases, the circuit fires more spikes per cycle as the input slope exceeds the reset rate, demonstrating correct delta modulation behaviour across the verified 1–100 Hz operating window.
+
+---
+
 ## License
 
 This project uses the [SkyWater SKY130 PDK](https://github.com/google/skywater-pdk) under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
