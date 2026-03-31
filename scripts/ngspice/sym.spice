@@ -1,20 +1,18 @@
 .option savecurrents
 .temp 27
+.ic v(vout)=0 v(p1)=1.8 v(vsf)=0.9
 
 * Case #1 -> 100 Hz
-Vin n1 0 SIN(0 0.5 100 0 0)
-Vin1 n2 n1 SIN(0 0.8 150 0 0)
-Vin2 n3 n1 SIN(0 0.9 250 0 0)
-Vin4 vin n3 SIN(0 0.6 200 0 0)
-*Vreset vreset 0 PULSE(1.8 0 0 1u 1u 900u 1000u)
+*Vin n1 0 SIN(0 0.5 100 0 0)
+*Vin1 n2 n1 SIN(0 0.8 150 0 0)
+*Vin2 n3 n1 SIN(0 0.9 250 0 0)
+*Vin4 vin n3 SIN(0 0.6 200 0 0)
 
 * Case #2 -> 10 Hz
 *Vin vin 0 SIN(-0.5 1.8 10 0 0)
-*Vreset vreset 0 PULSE(1.8 0 0 100u 100u 9m 10m)
 
 * Case #3 -> 1 Hz
-*Vin vin 0 SIN(0 1.8 1 0 0)
-*Vreset vreset 0 PULSE(1.8 0 0 1m 1m 90m 100m)
+Vin vin 0 SIN(0 1.8 1 0 0)
 
 .control
 save all
@@ -26,10 +24,11 @@ op
 * Case #2 -> Run 400 ms
 *tran 100u 0.4
 
-* Case #3 -> Run 4 s
-*tran 1m 4
+* Case #3 -> Run 10 s
+tran 1m 10
 
 plot vin vout
+plot vin vsf p1 vdiff vout
 
 write ATS_V0.1.raw
 
